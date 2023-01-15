@@ -1,4 +1,6 @@
+import { Interface } from "readline";
 import { css } from "styled-components";
+import { string } from "prop-types";
 
 export const buttonTheme = {
   orange: css`
@@ -14,5 +16,8 @@ export const buttonTheme = {
 export const buttonSize = {
   full: css`
     width: 100%;
+  `,
+  small: css`
+    width: auto;
   `,
 };

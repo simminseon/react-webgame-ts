@@ -1,6 +1,10 @@
 import React from "react";
 
-function WordArray({ wordArray }) {
+interface WordArrayProps {
+  wordArray: string[];
+}
+
+function WordArray({ wordArray }: WordArrayProps) {
   return (
     <ul>
       {wordArray.map((data, index) => {

@@ -12,9 +12,10 @@ function WordRelay() {
   const [order, setOrder] = React.useState(1);
   const [word, setWord] = React.useState(firstWord);
   const [wordArray, setWordArray] = React.useState([word]);
-  const inputRef = React.useRef(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const onClickButton = () => {
+    const input = inputRef.current;
     if (value[0] === word[word.length - 1]) {
       setWord(value);
       setOrder((prev) => prev + 1);
@@ -34,7 +35,9 @@ function WordRelay() {
     }
 
     reset("");
-    inputRef.current.focus();
+    if (input) {
+      input.focus();
+    }
   };
 
   const onClickStart = () => {
@@ -52,7 +55,7 @@ function WordRelay() {
           <WordArray wordArray={wordArray} />
           <div>{order}번째 참가자 차례입니다.</div>
           <WordInput
-            onChange={onChangeValue}
+            onChange={() => onChangeValue}
             onClick={onClickButton}
             value={value}
             ref={inputRef}
@@ -62,7 +65,7 @@ function WordRelay() {
         <div>
           <div>몇명이 참가하나요?</div>
           <WordInput
-            onChange={onChangeNumber}
+            onChange={() => onChangeNumber}
             onClick={onClickStart}
             value={number}
             ref={inputRef}
